@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: aws-node:v1
+    ports:
+      - "7000:7000"
+    tty: true
+    volumes:
+      - "./:/app"
+    networks:
+      - application
+    container_name: api
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        npm i
+        nodemon --legacy-watch src/server.js
+
+networks:
+  application:
+    driver: bridge
