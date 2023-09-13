@@ -20,6 +20,4 @@ services:
         npm i
         nodemon --legacy-watch src/server.js
 
-networks:
-  application:
-    driver: bridge
+networks: application
